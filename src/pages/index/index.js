@@ -1,12 +1,18 @@
 import React from "react";
 
+import Cadastro from "../../components/Cadastro";
+import logo from "../../utils/images/logo.svg";
+
 import {
   IndexWrapper,
   ImgWrapper,
+  ContentWrapper,
   FormWrapper,
   BottomWrapper,
   Paragraph,
   Citation,
+  Header,
+  Logo,
 } from "./styles";
 
 export default function () {
@@ -22,7 +28,14 @@ export default function () {
           <Paragraph>Sideral Tecnologia</Paragraph>
         </BottomWrapper>
       </ImgWrapper>
-      <FormWrapper>Direita</FormWrapper>
+      <ContentWrapper>
+        <Header>
+          <Logo src={logo} alt="Logo Bcredi" />
+        </Header>
+        <FormWrapper>
+          <Cadastro />
+        </FormWrapper>
+      </ContentWrapper>
     </IndexWrapper>
   );
 }

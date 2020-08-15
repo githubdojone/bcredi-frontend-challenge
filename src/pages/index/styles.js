@@ -26,9 +26,15 @@ export const ImgWrapper = styled.div`
     ), url("${bg}");
 `;
 
-export const FormWrapper = styled.div`
+export const ContentWrapper = styled.div`
   flex: 1;
   height: 100vh;
+`;
+
+export const FormWrapper = styled.div`
+  height: 100%;
+  display: grid;
+  place-items: center;
 `;
 
 export const BottomWrapper = styled.div`
@@ -50,4 +56,20 @@ export const Citation = styled(Paragraph)`
   font-size: 20px;
   margin-bottom: 8px;
   max-width: 75%;
+`;
+
+export const Header = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 32px;
+  margin-bottom: 38px;
+
+  @media (max-width: ${(props) => props.theme.breakPoints.md}) {
+    box-shadow: inset 0 -1px 0 0 ${(props) => props.theme.colors.lightGrey};
+    margin-bottom: 84px;
+  }
+`;
+
+export const Logo = styled.img`
+  width: 75px;
 `;
