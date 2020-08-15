@@ -1,14 +1,16 @@
 import styled from "styled-components";
 
+import { mediaQueries } from "../../utils/mediaQueries";
+
 export const Formulario = styled.div`
   max-width: 320px;
   display: grid;
   grid-gap: 35px;
   text-align: center;
 
-  @media (max-width: ${(props) => props.theme.breakPoints.md}) {
+  ${mediaQueries("md")`
     text-align: left;
-  }
+  `};
 `;
 
 export const TitleWraper = styled.div``;

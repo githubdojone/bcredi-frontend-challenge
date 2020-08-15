@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Formulario, TitleWraper, Title, Subtitle } from "./styles";
+import Input from "../_shared/Input";
 
 export default function () {
   return (
@@ -12,6 +13,7 @@ export default function () {
           CPF.
         </Subtitle>
       </TitleWraper>
+      <Input label="batata" error="batata" id="batata" placeholder="batata" />
     </Formulario>
   );
 }

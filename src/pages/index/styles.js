@@ -1,14 +1,17 @@
 import styled from "styled-components";
 
-import bg from "../../utils/images/bg.jpg";
+import bg from "../../images/bg.jpg";
+import { mediaQueries } from "../../utils/mediaQueries";
 
 export const IndexWrapper = styled.div`
   display: flex;
 `;
 export const ImgWrapper = styled.div`
-  @media (max-width: ${(props) => props.theme.breakPoints.md}) {
+    
+  ${mediaQueries("md")`
     display: none;
-  }
+  `};
+
   width: 45%;
   height: 100vh;
   display: flex;
@@ -64,10 +67,11 @@ export const Header = styled.div`
   padding: 16px 32px;
   margin-bottom: 38px;
 
-  @media (max-width: ${(props) => props.theme.breakPoints.md}) {
-    box-shadow: inset 0 -1px 0 0 ${(props) => props.theme.colors.lightGrey};
+  ${(props) =>
+    mediaQueries("md")(`
+    box-shadow: inset 0 -1px 0 0 ${props.theme.colors.lightGrey};
     margin-bottom: 84px;
-  }
+  `)}
 `;
 
 export const Logo = styled.img`
