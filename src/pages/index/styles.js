@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 import bg from "../../images/bg.jpg";
-import { mediaQueries } from "../../utils/mediaQueries";
+import { mediaQuerieMax } from "../../utils/mediaQueries";
 
 export const IndexWrapper = styled.div`
   display: flex;
 `;
 export const ImgWrapper = styled.div`
     
-  ${mediaQueries("md")`
+  ${mediaQuerieMax("md")`
     display: none;
   `};
 
@@ -35,9 +35,15 @@ export const ContentWrapper = styled.div`
 `;
 
 export const FormWrapper = styled.div`
-  height: 100%;
+  height: calc(100% - 56px);
   display: grid;
   place-items: center;
+  padding-top: 38px;
+  ${(props) =>
+    mediaQuerieMax("md")(`
+    
+    padding-top: 84px;
+  `)}
 `;
 
 export const BottomWrapper = styled.div`
@@ -65,12 +71,10 @@ export const Header = styled.div`
   display: flex;
   justify-content: flex-end;
   padding: 16px 32px;
-  margin-bottom: 38px;
 
   ${(props) =>
-    mediaQueries("md")(`
+    mediaQuerieMax("md")(`
     box-shadow: inset 0 -1px 0 0 ${props.theme.colors.lightGrey};
-    margin-bottom: 84px;
   `)}
 `;
 

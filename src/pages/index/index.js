@@ -1,7 +1,7 @@
 import React from "react";
 
 import Cadastro from "../../components/Cadastro";
-import logo from "../../utils/images/logo.svg";
+import logo from "../../images/logo.svg";
 
 import {
   IndexWrapper,

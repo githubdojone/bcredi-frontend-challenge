@@ -3,12 +3,12 @@ import { InputWrapper, Label, ErrorMessage } from "./styles";
 import MaskedInput from "react-text-mask";
 
 export default function Input(props) {
-  const { mask, error, id, label } = props;
+  const { error, label, style, ...rest } = props;
 
   return (
-    <InputWrapper>
-      <Label htmlFor={id}>{label}</Label>
-      {mask ? <MaskedInput {...props} /> : <input {...props} />}
+    <InputWrapper style={style}>
+      <Label htmlFor={rest.id}>{label}</Label>
+      {rest.mask ? <MaskedInput {...rest} /> : <input {...rest} />}
       {error && <ErrorMessage>{error}</ErrorMessage>}
     </InputWrapper>
   );
