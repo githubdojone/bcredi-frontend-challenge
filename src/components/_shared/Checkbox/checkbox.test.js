@@ -1,110 +1,38 @@
 import React from "react";
-import { fireEvent, screen, wait, cleanup, act } from "@testing-library/react";
+import { fireEvent, screen, wait } from "@testing-library/react";
 
-import Input from ".";
-import { customProviderRender } from "../../../setupTests";
+import Checkbox from ".";
 import lightTheme from "../../../themes/light";
+import { customProviderRender } from "../../../setupTests";
 
-const value = "value";
-const name = "name";
-const blur = jest.fn();
-const focus = jest.fn();
+const text = "Some Text";
+const id = "id";
 const change = jest.fn();
-const error = "error";
-const label = "Nome";
 
-afterEach(cleanup);
+test("Component should render with label", () => {
+  customProviderRender(<Checkbox label={text} id="id" />);
 
-test("Component should mount", () => {
-  customProviderRender(<Input id={name} label={label} />);
-
-  expect(screen.queryByLabelText(label)).toBeInTheDocument();
+  expect(screen.queryByText(text)).toBeInTheDocument();
 });
 
-test("Component should render props", () => {
-  customProviderRender(
-    <Input
-      id={name}
-      name={name}
-      label={label}
-      defaultValue={value}
-      error={error}
-    />
-  );
+test("Component should toggle change value when clicked", async () => {
+  customProviderRender(<Checkbox label={text} id={id} onChange={change} />);
 
-  const elmt = screen.queryByLabelText(label);
-
-  expect(elmt).toBeInTheDocument();
-
-  expect(elmt.value).toBe(value);
-
-  screen.getByText(error);
-
-  expect(elmt).toHaveAttribute("name", name);
-});
-
-test("Component should execute props functions", async () => {
-  customProviderRender(
-    <Input
-      id={name}
-      label={label}
-      value={value || ""}
-      onChange={change}
-      onBlur={blur}
-      onFocus={focus}
-    />
-  );
-
-  const elmt = screen.queryByLabelText(label);
+  const elmt = screen.queryByText(text);
 
   await wait(() => {
-    fireEvent.change(elmt, { target: { value: "a" } });
+    fireEvent.click(elmt);
   });
 
   expect(change).toHaveBeenCalled();
-
-  await wait(() => {
-    fireEvent.blur(elmt, { target: { value: "a" } });
-  });
-
-  expect(blur).toHaveBeenCalled();
-
-  await wait(() => {
-    fireEvent.focus(elmt, { target: { value: "a" } });
-  });
-
-  expect(focus).toHaveBeenCalled();
 });
 
-test("Component should have warning color when error", async () => {
-  customProviderRender(<Input id={name} label={label} error="erro teste" />);
-
-  const elmt = screen.queryByLabelText(label);
-
-  expect(elmt).toHaveStyle(`border-color: ${lightTheme.colors.warning}`);
-});
-
-test("Component should not have click when is disabled", async () => {
-  customProviderRender(<Input id={name} label={label} disabled />);
-
-  const elmt = screen.queryByLabelText(label);
-
-  act(() => elmt.focus());
-  expect(elmt).not.toHaveFocus();
-
-  expect(elmt).toHaveAttribute("disabled");
-});
-
-test("Component should handle mask prop", async () => {
+test("Component should be primary color when checked", async () => {
   customProviderRender(
-    <Input id={name} label={label} mask={[/\d/, /\d/, "/", /\d/, /\d/]} />
+    <Checkbox label={text} id={id} checked={true} onChange={change} />
   );
 
-  const elmt = screen.queryByLabelText(label);
-
-  act(() => {
-    fireEvent.change(elmt, { target: { value: "1" } });
-  });
-
-  expect(elmt.value).toEqual("1_/__");
+  expect(screen.getByTestId("checkbox-span")).toHaveStyle(
+    `background-color: ${lightTheme.colors.primary}`
+  );
 });

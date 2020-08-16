@@ -19,7 +19,7 @@ export default function Input(props) {
   };
 
   return (
-    <InputWrapper style={style}>
+    <InputWrapper style={style} error={error}>
       <Label htmlFor={rest.id}>{label}</Label>
       {rest.mask ? (
         <MaskedInput {...rest} type={cfgType} />

@@ -6,7 +6,7 @@ export default function Input(props) {
 
   return (
     <Label style={style}>
-      <Span checked={props.checked} />
+      <Span data-testid="checkbox-span" checked={props.checked} />
       {label}
       <input type="checkbox" {...rest} />
     </Label>

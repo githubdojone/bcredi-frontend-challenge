@@ -80,19 +80,8 @@ test("Component should have warning color when error", async () => {
   customProviderRender(<Input id={name} label={label} error="erro teste" />);
 
   const elmt = screen.queryByLabelText(label);
-
-  expect(elmt).toHaveStyle(`border-color: ${lightTheme.colors.warning}`);
-});
-
-test("Component should not have click when is disabled", async () => {
-  customProviderRender(<Input id={name} label={label} disabled />);
-
-  const elmt = screen.queryByLabelText(label);
-
-  act(() => elmt.focus());
-  expect(elmt).not.toHaveFocus();
-
-  expect(elmt).toHaveAttribute("disabled");
+  screen.queryByText("erro teste");
+  expect(elmt).toHaveStyle(`border: 1px solid ${lightTheme.colors.warning}`);
 });
 
 test("Component should handle mask prop", async () => {
