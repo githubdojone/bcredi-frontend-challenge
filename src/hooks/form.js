@@ -25,6 +25,19 @@ export const useForm = (callback, fields) => {
     }));
   };
 
+  const handleCheckboxChange = (event) => {
+    event.persist();
+
+    const {
+      target: { id, checked },
+    } = event;
+
+    setInputs((inputs) => ({
+      ...inputs,
+      [id]: checked,
+    }));
+  };
+
   const handleInputBlur = (event) => {
     event.persist();
     const {
@@ -40,6 +53,7 @@ export const useForm = (callback, fields) => {
   return {
     handleSubmit,
     handleInputChange,
+    handleCheckboxChange,
     handleInputBlur,
     errors,
     inputs,

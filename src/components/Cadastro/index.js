@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Input from "../_shared/Input";
+import Checkbox from "../_shared/Checkbox";
 import Button from "../_shared/Button";
 import { fields } from "./validation";
 import { useForm } from "../../hooks/form";
 
-import { Formulario, TitleWraper, Title, Subtitle } from "./styles";
+import {
+  Formulario,
+  TitleWraper,
+  Title,
+  Subtitle,
+  LabelCheckbox,
+  Footer,
+} from "./styles";
 
 const email = "email",
   cpf = "cpf",
   birth = "birth",
-  password = "password";
+  password = "password",
+  terms = "terms";
+
+const customLabel = (
+  <LabelCheckbox>
+    Li e estou de acordo com a <a href="!#">Política de Privacidade</a> e a{" "}
+    <a href="!#">Política de Uso de Informações</a>.
+  </LabelCheckbox>
+);
 
 export default function () {
   const submitForm = () => {};
@@ -18,6 +34,7 @@ export default function () {
   const {
     handleSubmit,
     handleInputChange,
+    handleCheckboxChange,
     handleInputBlur,
     errors,
     inputs,
@@ -82,12 +99,21 @@ export default function () {
     style: { gridArea: password },
   };
 
+  const inputTerms = {
+    id: terms,
+    label: customLabel,
+    onChange: handleCheckboxChange,
+    checked: inputs[terms] || false,
+    style: { gridArea: terms },
+  };
+
   const handleBtnDisabled = () => {
     return !(
       inputs[email] &&
       inputs[cpf] &&
       inputs[birth] &&
       inputs[password] &&
+      inputs[terms] &&
       !errors[email] &&
       !errors[cpf] &&
       !errors[birth] &&
@@ -108,9 +134,13 @@ export default function () {
       <Input {...inputCPF} />
       <Input {...inputBirth} />
       <Input {...inputPassword} />
+      <Checkbox {...inputTerms} />
       <Button type="submit" disabled={handleBtnDisabled()}>
         Cadastrar
       </Button>
+      <Footer>
+        Ja fiz meu cadastro. <a href="!#">Entrar agora.</a>
+      </Footer>
     </Formulario>
   );
 }

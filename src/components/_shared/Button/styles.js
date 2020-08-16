@@ -12,6 +12,7 @@ export const Button = styled.button`
   cursor: pointer;
   padding: 0 15px;
   width: 100%;
+  position: relative;
 
   &:hover {
     opacity: 0.8;
@@ -22,7 +23,6 @@ export const Button = styled.button`
 
     if (props.disabled) {
       styles += `
-        opacity: 0.4;
         cursor: default;
         pointer-events: none;
       `;
@@ -30,4 +30,11 @@ export const Button = styled.button`
 
     return styles;
   }}
+`;
+
+export const IconCage = styled.img`
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
 `;

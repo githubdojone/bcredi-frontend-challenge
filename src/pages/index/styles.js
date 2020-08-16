@@ -37,12 +37,11 @@ export const ContentWrapper = styled.div`
 export const FormWrapper = styled.div`
   height: calc(100% - 56px);
   display: grid;
-  place-items: center;
+  place-items: start center;
   padding-top: 38px;
   ${(props) =>
     mediaQuerieMax("md")(`
-    
-    padding-top: 84px;
+    padding: 84px 24px 0;
   `)}
 `;
 
