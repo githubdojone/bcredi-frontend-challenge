@@ -47,7 +47,7 @@ export const birthValidation = (value) => {
     return "O campo de nascimento é obrigatório";
   }
   if (!moment(value, "DD/MM/YYYY", true).isValid()) {
-    return "Senha deve conter 6 ou mais dígitos";
+    return "Data inválida";
   }
   return false;
 };

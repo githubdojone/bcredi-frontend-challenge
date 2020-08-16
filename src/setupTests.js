@@ -5,6 +5,5 @@ import { ThemeProvider } from "styled-components";
 
 import lightTheme from "./themes/light";
 
-export const customProviderRender = (component) => {
-  return render(<ThemeProvider theme={lightTheme}>{component}</ThemeProvider>);
-};
+export const customProviderRender = (component) =>
+  render(<ThemeProvider theme={lightTheme}>{component}</ThemeProvider>);

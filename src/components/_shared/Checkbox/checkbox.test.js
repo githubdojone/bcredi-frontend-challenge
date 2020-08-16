@@ -32,7 +32,7 @@ test("Component should be primary color when checked", async () => {
     <Checkbox label={text} id={id} checked={true} onChange={change} />
   );
 
-  expect(screen.getByTestId("checkbox-span")).toHaveStyle(
+  expect(screen.queryByTestId("checkbox-span")).toHaveStyle(
     `background-color: ${lightTheme.colors.primary}`
   );
 });
