@@ -36,7 +36,25 @@ export const Label = styled.label`
 
 export const ErrorMessage = styled.span`
   position: absolute;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
   top: calc(100% + 5px);
   left: 3px;
   color: ${(props) => props.theme.colors.warning};
 `;
+
+export const ButtonToggleType = styled.button`
+  position: absolute;
+  right: 16px;
+  top: calc(50% + 25px);
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  transform: translateY(calc(50% - 25px));
+  ${(props) => props.toggled && `opacity: 0.4`}
+`;
+
+export const IconEye = styled.img``;

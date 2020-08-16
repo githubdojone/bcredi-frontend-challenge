@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import Input from "../_shared/Input";
 import Checkbox from "../_shared/Checkbox";
@@ -45,6 +45,7 @@ export default function () {
     label: "E-mail",
     onChange: handleInputChange,
     onBlur: handleInputBlur,
+    placeholder: "ana.maria@email.com",
     value: inputs[email] || "",
     error: errors[email],
     style: { gridArea: email },
@@ -72,6 +73,7 @@ export default function () {
     guide: false,
     onChange: handleInputChange,
     onBlur: handleInputBlur,
+    placeholder: "000.000.000-00",
     value: inputs[cpf] || "",
     error: errors[cpf],
     style: { gridArea: cpf },
@@ -84,6 +86,7 @@ export default function () {
     guide: false,
     onChange: handleInputChange,
     onBlur: handleInputBlur,
+    placeholder: "DD/MM/AAAA",
     value: inputs[birth] || "",
     error: errors[birth],
     style: { gridArea: birth },
@@ -92,8 +95,12 @@ export default function () {
   const inputPassword = {
     id: password,
     label: "Senha",
+    type: "password",
+    showButtonPassword: true,
     onChange: handleInputChange,
     onBlur: handleInputBlur,
+    autoComplete: "new-password",
+    placeholder: "Cadastre uma senha",
     value: inputs[password] || "",
     error: errors[password],
     style: { gridArea: password },
