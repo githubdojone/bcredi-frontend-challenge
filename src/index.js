@@ -6,14 +6,17 @@ import { ThemeProvider } from "styled-components";
 import lightTheme from "./themes/light";
 import GlobalStyle from "./styles/global";
 import Routes from "./Routes";
+import { AppProvider } from "./contexts/AppContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={lightTheme}>
-      <Router>
-        <Routes />
-        <GlobalStyle />
-      </Router>
+      <AppProvider>
+        <Router>
+          <Routes />
+          <GlobalStyle />
+        </Router>
+      </AppProvider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

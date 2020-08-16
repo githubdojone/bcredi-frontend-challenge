@@ -5,6 +5,7 @@ import Checkbox from "../_shared/Checkbox";
 import Button from "../_shared/Button";
 import { fields } from "./validation";
 import { useForm } from "../../hooks/form";
+import { useAppContext, setNotification } from "../../contexts/AppContext";
 
 import {
   Formulario,
@@ -29,7 +30,16 @@ const customLabel = (
 );
 
 export default function () {
-  const submitForm = () => {};
+  const { dispatch } = useAppContext();
+
+  const submitForm = (inputs) => {
+    dispatch(
+      setNotification({
+        type: "success",
+        msg: "Parabéns! Cadastro realizado com sucesso!",
+      })
+    );
+  };
 
   const {
     handleSubmit,

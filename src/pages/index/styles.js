@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import bg from "../../images/bg.jpg";
 import { mediaQuerieMax } from "../../utils/mediaQueries";
 
 export const IndexWrapper = styled.div`
@@ -26,12 +25,13 @@ export const ImgWrapper = styled.div`
       rgba(0, 0, 0, 0) 42%,
       rgba(0, 0, 0, 0.5) 69%,
       rgba(0, 0, 0, 0.8) 96%
-    ), url("${bg}");
+    ), url("${(props) => props.bg}");
 `;
 
 export const ContentWrapper = styled.div`
   flex: 1;
   height: 100vh;
+  position: relative;
 `;
 
 export const FormWrapper = styled.div`
